@@ -6,24 +6,25 @@ const books = [
 
 function displayBooks(list) {
     const tbody = document.getElementById('tbody');
+    tbody.innerHTML = ''; // Clear before adding rows
     
     list.forEach(book => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
+        tbody.innerHTML += `
+        <tr>
             <td>${book.no}</td>
             <td>${book.title}</td>
             <td>${book.author}</td>
             <td>${book.isbn}</td>
+        </tr>
         `;
-        tbody.appendChild(row);
     });
 }
-displayBooks(books);
+
 // function filterBooksByTitle(title) {
 //     if (!title) return books;
 //     return books.filter(b => b.title.toLowerCase().includes(title.toLowerCase()));
 // }
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     displayBooks(books);
-// });
+document.addEventListener('DOMContentLoaded', () => {
+    displayBooks(books);
+});
